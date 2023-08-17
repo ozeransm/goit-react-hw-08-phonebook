@@ -1,0 +1,30 @@
+.common{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    outline: 1px solid grey;
+    width: 300px;
+}
+.common > label > p{
+    padding: 0;
+    margin: 0 0 5px 0;
+}
+.common > label{
+    padding: 0;
+    margin: 0;
+}
+.common > button{
+    padding: 0;
+    margin: 10px 0 0 0;
+    border-radius: 5px;
+    border: none;
+}
+
+.btnForm{
+    width: 100px;
+}
+
+.common > button:hover{
+    background-color: blue;
+    color: bisque;
+}

@@ -1,0 +1,64 @@
+import { combineReducers, createSlice } from "@reduxjs/toolkit";
+import { addPhoneBook, deleteFromPhoneBook, fetchPhoneBook } from "./operations";
+
+const initialState = {
+    contacts: [],
+    isLoading: false,
+    error: null,
+    filter: ""
+    
+}
+
+export const reducerPhonebook = createSlice({
+name: 'phonebook',
+initialState,
+reducers:{
+    'filter': (state, {payload:{filter}}) => {
+        state.filter = filter;        
+    }
+},
+extraReducers: (builder)=>{
+    builder
+    .addCase(fetchPhoneBook.pending, (state, action)=>{
+        state.isLoading = true;
+    })
+    .addCase(fetchPhoneBook.fulfilled, (state, action) => {
+        state.contacts = [...action.payload];
+        state.isLoading = false;
+        state.error = null;
+    })
+    .addCase(fetchPhoneBook.rejected, (state, action)=>{
+        state.isLoading = false;
+        state.error = action.payload;
+    })
+    .addCase(addPhoneBook.pending, (state, action)=>{
+        state.isLoading = true;
+    })
+    .addCase(addPhoneBook.fulfilled, (state, action)=>{
+        state.contacts.push(action.payload);
+        state.isLoading = false;
+        state.error = null;
+    })
+    .addCase(addPhoneBook.rejected, (state, action)=>{
+        state.isLoading = false;
+        state.error = action.payload;
+    })
+    .addCase(deleteFromPhoneBook.pending, (state, action)=>{
+        state.isLoading = true;
+    })
+    .addCase(deleteFromPhoneBook.fulfilled, (state, action)=>{
+        state.contacts = state.contacts.filter((el)=>el.id!==action.payload.id)
+        state.isLoading = false;
+        state.error = null;
+    })
+    .addCase(deleteFromPhoneBook.rejected, (state, action)=>{
+        state.isLoading = false;
+        state.error = action.payload;
+    })
+}
+});
+
+export const reducer = combineReducers({ book: reducerPhonebook.reducer });
+
+export const { filter } = reducerPhonebook.actions;
+
