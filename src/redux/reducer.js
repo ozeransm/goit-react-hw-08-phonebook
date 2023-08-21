@@ -1,12 +1,14 @@
 import { combineReducers, createSlice } from "@reduxjs/toolkit";
-import { addPhoneBook, deleteFromPhoneBook, fetchPhoneBook } from "./operations";
+import { addPhoneBook, deleteFromPhoneBook, fetchPhoneBook, login, logout, refresh, register } from "./operations";
 
 const initialState = {
     contacts: [],
     isLoading: false,
     error: null,
-    filter: ""
-    
+    filter: "",
+    isActive: false,
+    user: null,
+    token: null
 }
 
 export const reducerPhonebook = createSlice({
@@ -54,6 +56,25 @@ extraReducers: (builder)=>{
     .addCase(deleteFromPhoneBook.rejected, (state, action)=>{
         state.isLoading = false;
         state.error = action.payload;
+    })
+    .addCase(register.fulfilled, (state, action)=>{
+        state.user = action.user;
+        state.token = action.payload.token;
+    })
+    .addCase(login.fulfilled, (state, action)=>{
+        
+        state.user = action.payload.user;
+        state.token = action.payload.token; 
+        state.isActive = true;
+    })
+    .addCase(logout.fulfilled, (state, action)=>{
+        state.isActive = false;
+    })
+    .addCase(refresh.fulfilled,(state, action)=>{
+        
+        state.user = action.payload;
+        state.token = action.payload.token; 
+        state.isActive = true;
     })
 }
 });

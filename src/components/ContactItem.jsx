@@ -1,12 +1,17 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from "react-redux";
 import { deleteFromPhoneBook } from "../redux/operations";
-
+import { Box, FormControl, Input, Button, Text, Flex } from '@chakra-ui/react';
 export const ContactItem = ({id, name, number})=>{
     const dispatch = useDispatch();
     
     return(
-        <li>{name}: {number} <button onClick={()=>dispatch(deleteFromPhoneBook(id))}>Delete</button></li>
+        <Flex>
+        <Text mr='10' fontSize='15px' fontWeight='600' color='darkgray'>
+           {`Name: ${name}`}: {`Phone: ${number}`} 
+        </Text>
+        <Button ml='auto' mr='3' h='5' colorScheme='orange' type="button" onClick={()=>dispatch(deleteFromPhoneBook(id))}>Delete</Button>
+        </Flex>
     )
 }
 ContactItem.propTypes = {
@@ -15,3 +20,4 @@ ContactItem.propTypes = {
     number: PropTypes.string,
     
   }
+//   <button onClick={()=>dispatch(deleteFromPhoneBook(id))}>Delete</button>
