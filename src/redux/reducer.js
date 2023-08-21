@@ -70,6 +70,9 @@ extraReducers: (builder)=>{
     .addCase(logout.fulfilled, (state, action)=>{
         state.isActive = false;
     })
+    .addCase(refresh.pending, (state, action)=>{
+        state.isActive = true;
+    })
     .addCase(refresh.fulfilled,(state, action)=>{
         
         state.user = action.payload;
