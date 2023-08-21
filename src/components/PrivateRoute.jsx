@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import { isActive } from "redux/selector";
+import { Navigate } from "react-router-dom";
+import { isActive, isRefresh } from "redux/selector";
 
 export const PrivateRoute=({ component: Component, redirectTo = '/' })=>{
     const logined = useSelector(isActive);
-    console.log(logined)
-    if(logined) return Component;
-    // return <Navigate to={redirectTo}/>
+    const refresh = useSelector(isRefresh)
+    return (!logined && !refresh) ? <Navigate to={redirectTo}/> : Component;
 }
 

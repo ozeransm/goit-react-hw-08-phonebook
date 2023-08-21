@@ -7,6 +7,7 @@ const initialState = {
     error: null,
     filter: "",
     isActive: false,
+    isRefresh: true,
     user: null,
     token: null
 }
@@ -71,13 +72,16 @@ extraReducers: (builder)=>{
         state.isActive = false;
     })
     .addCase(refresh.pending, (state, action)=>{
-        state.isActive = true;
+        state.isRefresh = true;
     })
     .addCase(refresh.fulfilled,(state, action)=>{
         
         state.user = action.payload;
-        state.token = action.payload.token; 
         state.isActive = true;
+        state.isRefresh = false;
+    })
+    .addCase(refresh.rejected, (state, action)=>{
+        state.isRefresh = false;
     })
 }
 });

@@ -66,7 +66,7 @@ export const register = createAsyncThunk(
     async (_, thunkAPI) => {
       const token = localStorage.getItem("token");
       token && setAuthHeader(JSON.parse(token));
-       
+      // console.log(token)
       try {
         const res = await axios.get('/users/current');
         // After successful registration, add the token to the HTTP header

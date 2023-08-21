@@ -7,7 +7,7 @@ import { store } from 'redux/store';
 import { BrowserRouter } from 'react-router-dom/dist';
 // import { PersistGate } from 'redux-persist/integration/react';
 // import { persistor } from "./redux/store";
-// basename="/goit-react-hw-08-movies"
+// basename="/goit-react-hw-08-phonebook"
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>

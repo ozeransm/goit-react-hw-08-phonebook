@@ -45,7 +45,8 @@ export const App = () => {
           <Route index element={<HomePage/>} /> 
           <Route path="register" element={
             <PublickRoute component={<Register/>}/>} />
-          <Route path="login" element={<Login/>} />
+          <Route path="login" element={
+              <PublickRoute component={<Login/>}/>} />
           <Route path="contacts" element={
             <PrivateRoute redirectTo="/login" component={
               <>
