@@ -49,20 +49,20 @@ export const App = () => {
               <PublickRoute component={<Login/>}/>} />
           <Route path="contacts" element={
             <PrivateRoute redirectTo="/login" component={
-              <>
-            <AddNewContact/>
-            <FilterContact/>
-            <ScaleLoader
-              color="#d3841d"
-              speedMultiplier={4}
-              loading={loading}
-              cssOverride={override}
-              size={80}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
+            <>
+              <AddNewContact/>
+              <FilterContact/>
+              <ScaleLoader
+                color="#d3841d"
+                speedMultiplier={4}
+                loading={loading}
+                cssOverride={override}
+                size={80}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
             <Contacts/>
-          </>
+           </>
             } />
             } />
         </Route>   
@@ -78,17 +78,3 @@ export const App = () => {
      
   );
 };
-// logined && <>
-//             <AddNewContact/>
-//             <FilterContact/>
-//             <ScaleLoader
-//               color="#d3841d"
-//               speedMultiplier={4}
-//               loading={loading}
-//               cssOverride={override}
-//               size={80}
-//               aria-label="Loading Spinner"
-//               data-testid="loader"
-//             />
-//             <Contacts/>
-//           </>

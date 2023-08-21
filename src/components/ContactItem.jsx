@@ -7,10 +7,12 @@ export const ContactItem = ({id, name, number})=>{
     
     return(
         <Flex>
-        <Text mr='10' fontSize='15px' fontWeight='600' color='darkgray'>
-           {`Name: ${name}`}: {`Phone: ${number}`} 
-        </Text>
-        <Button ml='auto' mr='3' h='5' colorScheme='orange' type="button" onClick={()=>dispatch(deleteFromPhoneBook(id))}>Delete</Button>
+            
+                <Text mr='10' fontSize='15px' fontWeight='600' color='darkgray'>
+                                {`Name: ${name}`}: {`Phone: ${number}`} 
+                </Text>
+                <Button ml='auto' mr='3' h='5' colorScheme='orange' type="button" onClick={()=>dispatch(deleteFromPhoneBook(id))}>Delete</Button>
+            
         </Flex>
     )
 }

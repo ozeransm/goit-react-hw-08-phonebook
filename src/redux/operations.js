@@ -1,7 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addContacts } from "addContact";
-import { deleteContacts } from "deleteContact";
-import { fetchContacts } from "fetchContacts";
 import axios from 'axios';
 import Notiflix from "notiflix";
 
@@ -9,7 +6,7 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const setAuthHeader = token => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    localStorage.setItem("token", JSON.stringify(token));  
+    localStorage.setItem("token", token);  
 };
 
 export const register = createAsyncThunk(
@@ -54,6 +51,7 @@ export const register = createAsyncThunk(
         const res = await axios.post('/users/logout', credentials);
         // After successful registration, add the token to the HTTP header
         axios.defaults.headers.common.Authorization = '';
+        localStorage.removeItem("token");
         return res.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
@@ -65,7 +63,7 @@ export const register = createAsyncThunk(
     'auth/refresh',
     async (_, thunkAPI) => {
       const token = localStorage.getItem("token");
-      token && setAuthHeader(JSON.parse(token));
+      token && setAuthHeader(token);
       // console.log(token)
       try {
         const res = await axios.get('/users/current');
@@ -82,7 +80,7 @@ export const fetchPhoneBook = createAsyncThunk(
     'phonebook/fetchContacts',
     async (_, thunkAPI) => {
         try{
-            const response = await fetchContacts();
+            const response = await axios.get('/contacts');//fetchContacts();
             return response.data;
         }catch(error){
             return thunkAPI.rejectWithValue(error.message);
@@ -94,7 +92,7 @@ export const addPhoneBook = createAsyncThunk(
     'phonebook/addContacts',
     async ({name, number}, thunkAPI ) => {
         try{
-            const response = await addContacts(name, number);
+            const response = await axios.post('/contacts',{"name":name,"number":number});//addContacts(name, number);
             return response.data;
         }catch(error){
             return thunkAPI.rejectWithValue(error.message);
@@ -105,7 +103,7 @@ export const deleteFromPhoneBook = createAsyncThunk(
     'phonebook/deleteContacts',
     async (id, thunkAPI ) => {
         try{
-            const response = await deleteContacts(id);
+            const response = await axios.delete(`/contacts/${id}`);//deleteContacts(id);
             return response.data;
         }catch(error){
             return thunkAPI.rejectWithValue(error.message);
