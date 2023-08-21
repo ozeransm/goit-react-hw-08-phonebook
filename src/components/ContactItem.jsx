@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from "react-redux";
 import { deleteFromPhoneBook } from "../redux/operations";
-import { Box, FormControl, Input, Button, Text, Flex } from '@chakra-ui/react';
+import { Button, Text, Flex } from '@chakra-ui/react';
 export const ContactItem = ({id, name, number})=>{
     const dispatch = useDispatch();
     
@@ -20,4 +20,3 @@ ContactItem.propTypes = {
     number: PropTypes.string,
     
   }
-//   <button onClick={()=>dispatch(deleteFromPhoneBook(id))}>Delete</button>
