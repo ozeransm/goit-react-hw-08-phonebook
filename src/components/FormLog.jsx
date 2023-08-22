@@ -6,7 +6,7 @@ import { login, logout } from 'redux/operations';
 import { isActive, user } from 'redux/selector';
 
 
-export const FormLog=()=>{
+export const FormLog=({num=100})=>{
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
     const [show, setShow] = useState(false);
@@ -24,6 +24,7 @@ export const FormLog=()=>{
         <form onSubmit={handlerLogin}>
         <FormControl display='flex' >
           {!logined ? <Input 
+                          id={`field-r3${num}`}
                           name="email" 
                           value={email} 
                           type='email' 
@@ -35,6 +36,7 @@ export const FormLog=()=>{
                           : <Text fontSize='24px' fontWeight='500'>User: {logUser?.name}</Text>}
           {!logined && <InputGroup size='md'>
             <Input
+            id={`field-r4${num}`}
             name="password"
             value={password}
             pr='4.5rem'

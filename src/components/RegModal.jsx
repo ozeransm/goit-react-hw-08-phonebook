@@ -22,7 +22,7 @@ export function RegModal({isOpen, onClose, onOpen}) {
             <ModalHeader>Add New User</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-                <FormReg/>
+                <FormReg num={104}/>
             </ModalBody>
             <ModalFooter>
               

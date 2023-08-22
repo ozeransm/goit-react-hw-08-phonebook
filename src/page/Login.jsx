@@ -11,7 +11,7 @@ export const Login=()=>{
         <>
             <Box display='flex' flexDirection='column' alignItems='center' w='500px' ml='auto' mr='auto' mt='10px' mb='10px'  bg='lightBlue' borderRadius='md' p={4} color='darkgrey'>
                 <Text fontSize='24px' fontWeight='700'>Please enter login and password</Text>
-                <FormLog/>
+                <FormLog num={102}/>
                 {logined && <Flex mt='10px'>
                                 <Button colorScheme='purple' type="button" onClick={()=>navigate('/register')}>Register</Button>
                                 <Button ml='5px' mr='5px' colorScheme='purple' type="button" onClick={()=>navigate('/login')}>Login</Button>

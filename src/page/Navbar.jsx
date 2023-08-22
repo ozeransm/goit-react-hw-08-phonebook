@@ -18,7 +18,7 @@ export const Navbar = ({onOpen})=>{
         
         <Text fontSize='24px' fontWeight='700'><Link to='/'>Phonebook</Link></Text>
         <Flex>
-          <FormLog/>
+          <FormLog num={101}/>
         <Button  colorScheme='purple' type="button" onClick={onOpen}>Register</Button>
         <Button ml='10px' colorScheme='facebook' type="button" onClick={()=>navigate('/')}>Home</Button>
         </Flex>

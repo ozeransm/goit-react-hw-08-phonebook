@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { register } from "redux/operations";
 import { Button, FormControl, Input, InputGroup, InputRightElement } from "@chakra-ui/react"
 
-export const FormReg=()=>{
+export const FormReg=({num=100})=>{
     const [name, setName]=useState('');
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
@@ -23,10 +23,29 @@ export const FormReg=()=>{
         <FormControl display='flex' flexDirection='column'>
             <>
             
-            <Input type='text' name="name" value={name} color='grey' placeholder='Full Name' w='150' mb='5px' onChange={({target:{value}})=>setName(value)}/>  
-            <Input type='email' name="email" value={email} color='grey' placeholder='Email' w='150' mb='5px' onChange={({target:{value}})=>setEmail(value)}/>
+            <Input 
+              id={`field-r5${num}`}
+              type='text' 
+              name="name" 
+              value={name} 
+              color='grey' 
+              placeholder='Full Name' 
+              w='150' 
+              mb='5px' 
+              onChange={({target:{value}})=>setName(value)}/>  
+            <Input 
+              id={`field-r6${num}`}
+              type='email' 
+              name="email" 
+              value={email} 
+              color='grey' 
+              placeholder='Email' 
+              w='150' 
+              mb='5px' 
+              onChange={({target:{value}})=>setEmail(value)}/>
         <InputGroup size='md'>
         <Input
+          id={`field-r7${num}`}
           name="password"
           pr='4.5rem'
           type={show ? 'text' : 'password'}
