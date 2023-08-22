@@ -12,9 +12,9 @@ export const Contacts = ()=>{
     const filterPhoneBook = phoneBook.filter(({name})=>name?.toUpperCase().includes(filterPhone.toUpperCase()));
     // console.log(phoneBook)
     const dispatch=useDispatch()
-useEffect(()=>{
-  dispatch(fetchPhoneBook());
-},[dispatch])
+    useEffect(()=>{
+      dispatch(fetchPhoneBook());
+    },[dispatch])
     return(
       <Box display='flex' flexDirection='column' alignItems='center' w='70%' ml='auto' mr='auto' mt='10px' mb='20px' bg='lightBlue' borderRadius='md' p={4} color='white'>
         

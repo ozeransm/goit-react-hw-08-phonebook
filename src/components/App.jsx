@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { Contacts } from "../page/Contacts";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchPhoneBook, refresh } from "../redux/operations";
+import {  useSelector } from "react-redux";
 import { isLoading } from "../redux/selector";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { ChakraProvider, useDisclosure } from '@chakra-ui/react';
@@ -27,13 +25,6 @@ const override = {
 
 export const App = () => {
   const loading = useSelector(isLoading);
-  const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(refresh())
-
-    dispatch(fetchPhoneBook());
-  },[dispatch])
-
   const { isOpen, onOpen, onClose } = useDisclosure();
    
   return (
