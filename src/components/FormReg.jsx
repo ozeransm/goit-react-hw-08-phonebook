@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { register } from "redux/operations";
+import { register } from "redux/auth/auth";
 import { Button, FormControl, Input, InputGroup, InputRightElement } from "@chakra-ui/react"
+import { useNavigate } from "react-router-dom";
 
 export const FormReg=({num=100})=>{
     const [name, setName]=useState('');
@@ -10,10 +11,10 @@ export const FormReg=({num=100})=>{
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
     const dispatch=useDispatch();
+    const navigate = useNavigate();
     function handlerRegister(e){
         e.preventDefault();
-        
-        dispatch(register({name, email, password}))
+        dispatch(register({name, email, password})).then(()=>navigate('/contacts'));
         e.target.reset();
     }
     

@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react"
 import { FormReg } from "components/FormReg"
 
 
-export const Register=()=>{
+const Register=()=>{
     
 
     return(
@@ -11,3 +11,4 @@ export const Register=()=>{
         </Box>
     )
 }
+export default Register;

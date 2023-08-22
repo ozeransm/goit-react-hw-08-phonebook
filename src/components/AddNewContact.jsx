@@ -2,9 +2,9 @@ import { Box, FormControl, Input, Button, Text, Flex } from '@chakra-ui/react';
 import Notiflix from 'notiflix';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPhoneBook } from 'redux/operations';
+import { addPhoneBook } from 'redux/contacts/contacts';
 import { contacts as contactPhone } from "redux/selector";
-export const AddNewContact = ()=>{
+const AddNewContact = ()=>{
       const [name, setName] = useState('');
       const [number, setPhone] = useState('');
       const dispatch = useDispatch();
@@ -50,3 +50,4 @@ export const AddNewContact = ()=>{
       </Box>
     )
 }
+export default AddNewContact;

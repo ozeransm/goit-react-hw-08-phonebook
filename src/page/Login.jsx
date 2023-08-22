@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { isActive } from "redux/selector";
 
-export const Login=()=>{
+const Login=()=>{
     const logined = useSelector(isActive);
     const navigate = useNavigate()
     return(
@@ -22,3 +22,4 @@ export const Login=()=>{
         </>
     )
 }
+export default Login;

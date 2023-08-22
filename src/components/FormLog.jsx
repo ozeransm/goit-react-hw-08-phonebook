@@ -2,7 +2,8 @@ import { FormControl, Input, Button, Text, InputGroup, InputRightElement } from 
 import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, logout } from 'redux/operations';
+import { useNavigate } from 'react-router-dom';
+import { login, logout } from 'redux/auth/auth';
 import { isActive, user } from 'redux/selector';
 
 
@@ -14,10 +15,13 @@ export const FormLog=({num=100})=>{
     const logUser = useSelector(user);
     const handleClick = () => setShow(!show);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
       function handlerLogin(e){
         e.preventDefault();
-        !logined && dispatch(login({email, password}));
+        !logined && dispatch(login({email, password})).then(()=>navigate('/contacts'));
         logined && dispatch(logout(axios.defaults.headers.common.Authorization));
+        
       }
     return(
         

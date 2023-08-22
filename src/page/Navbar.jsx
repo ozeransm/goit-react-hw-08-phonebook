@@ -1,13 +1,15 @@
 import { Box, Button, Text, Flex } from '@chakra-ui/react';
 import { FormLog } from 'components/FormLog';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { Suspense, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { refresh } from 'redux/operations';
+import { refresh } from '../redux/contacts/contacts';
+import { isActive } from 'redux/selector';
 
 export const Navbar = ({onOpen})=>{
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const logined = useSelector(isActive);
     useEffect(()=>{
       dispatch(refresh())
 
@@ -19,11 +21,15 @@ export const Navbar = ({onOpen})=>{
         <Text fontSize='24px' fontWeight='700'><Link to='/'>Phonebook</Link></Text>
         <Flex>
           <FormLog num={101}/>
-        <Button  colorScheme='purple' type="button" onClick={onOpen}>Register</Button>
-        <Button ml='10px' colorScheme='facebook' type="button" onClick={()=>navigate('/')}>Home</Button>
+        {!logined && <Button  colorScheme='purple' type="button" onClick={onOpen}>Register</Button>}
+        {logined && <Button ml='10px' colorScheme='facebook' type="button" onClick={()=>navigate('/')}>Home</Button>}
+        {logined && <Button ml='10px' colorScheme='facebook' type="button" onClick={()=>navigate('/contacts')}>Contacts</Button>}
+        
         </Flex>
       </Box>
-      <Outlet/>
+      <Suspense>
+        <Outlet/>
+      </Suspense>
       </>
     )
 }

@@ -1,5 +1,7 @@
 import { combineReducers, createSlice } from "@reduxjs/toolkit";
-import { addPhoneBook, deleteFromPhoneBook, fetchPhoneBook, login, logout, refresh, register } from "./operations";
+import { login, logout, register } from "./auth/auth";
+import { addPhoneBook, deleteFromPhoneBook, fetchPhoneBook, refresh } from "./contacts/contacts";
+
 
 const initialState = {
     contacts: [],
@@ -60,8 +62,9 @@ extraReducers: (builder)=>{
         state.error = action.payload;
     })
     .addCase(register.fulfilled, (state, action)=>{
-        state.user = action.user;
+        state.user = action.payload.user;
         state.token = action.payload.token;
+        state.isActive = true;
     })
     .addCase(login.fulfilled, (state, action)=>{
         

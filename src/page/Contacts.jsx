@@ -4,9 +4,9 @@ import { ContactItem } from "../components/ContactItem";
 import PropTypes from 'prop-types';
 import { Box, Text } from '@chakra-ui/react';
 import { useEffect } from "react";
-import { fetchPhoneBook } from "redux/operations";
+import { fetchPhoneBook } from "redux/contacts/contacts";
 
-export const Contacts = ()=>{
+const Contacts = ()=>{
     const phoneBook = useSelector(contacts);
     const filterPhone = useSelector(filterName);
     const filterPhoneBook = phoneBook.filter(({name})=>name?.toUpperCase().includes(filterPhone.toUpperCase()));
@@ -42,3 +42,4 @@ Contacts.propTypes = {
   ),
   filterPhone: PropTypes.string,
 }
+export default Contacts;

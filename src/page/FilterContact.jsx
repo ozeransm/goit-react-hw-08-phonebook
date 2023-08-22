@@ -2,7 +2,7 @@ import { Box, Input, Text } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { filter } from 'redux/reducer';
 
-export const FilterContact = ()=>{
+const FilterContact = ()=>{
   const dispatch = useDispatch();
 
   const handlerChange = (e)=>{
@@ -24,3 +24,4 @@ export const FilterContact = ()=>{
         </Box>
     )
 }
+export default FilterContact;
