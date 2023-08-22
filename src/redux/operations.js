@@ -6,7 +6,7 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const setAuthHeader = token => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    localStorage.setItem("token", token);  
+      
 };
 
 export const register = createAsyncThunk(
@@ -17,6 +17,7 @@ export const register = createAsyncThunk(
         const res = await axios.post('/users/signup', credentials);
         // After successful registration, add the token to the HTTP header
         setAuthHeader(res.data.token);
+        localStorage.setItem("token", res.data.token);
         Notiflix.Notify.success('Created New User');
         return res.data;
       } catch (error) {
@@ -33,7 +34,9 @@ export const register = createAsyncThunk(
       try {
         const res = await axios.post('/users/login', credentials);
         // After successful registration, add the token to the HTTP header
+        
         setAuthHeader(res.data.token);
+        localStorage.setItem("token", res.data.token);
         Notiflix.Notify.success('Login success');
         return res.data;
       } catch (error) {
@@ -50,6 +53,7 @@ export const register = createAsyncThunk(
       try {
         const res = await axios.post('/users/logout', credentials);
         // After successful registration, add the token to the HTTP header
+        
         axios.defaults.headers.common.Authorization = '';
         localStorage.removeItem("token");
         return res.data;

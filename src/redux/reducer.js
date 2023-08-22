@@ -26,6 +26,7 @@ extraReducers: (builder)=>{
         state.isLoading = true;
     })
     .addCase(fetchPhoneBook.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.contacts = [...action.payload];
         state.isLoading = false;
         state.error = null;
