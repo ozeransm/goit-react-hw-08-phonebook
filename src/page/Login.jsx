@@ -9,7 +9,7 @@ const Login=()=>{
     const navigate = useNavigate()
     return(
         <>
-            <Box display='flex' flexDirection='column' alignItems='center' w='500px' ml='auto' mr='auto' mt='10px' mb='10px'  bg='lightBlue' borderRadius='md' p={4} color='darkgrey'>
+            <Box display='flex' flexWrap='wrap' flexDirection='column' alignItems='center' w='55%' ml='auto' mr='auto' mt='10px' mb='10px'  bg='lightBlue' borderRadius='md' p={4} color='darkgrey'>
                 <Text fontSize='24px' fontWeight='700'>Please enter login and password</Text>
                 <FormLog num={102}/>
                 {logined && <Flex mt='10px'>

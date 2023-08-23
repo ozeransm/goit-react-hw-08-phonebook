@@ -15,7 +15,7 @@ const FilterContact = ()=>{
   }   
       
     return(
-        <Box w='90%' ml='auto' mr='auto' mb='0' display='flex' alignItems="center" justifyContent="center" bg='lightBlue' borderRadius='md' p={4} color='white'>
+        <Box w='90%' ml='auto' mr='auto' mb='0' display='flex' flexWrap='wrap' alignItems="center" justifyContent="center" bg='lightBlue' borderRadius='md' p={4} color='white'>
         
         <Text fontSize='20px' fontWeight='500'>Filter contact by name</Text>
         

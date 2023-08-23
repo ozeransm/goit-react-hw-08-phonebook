@@ -37,9 +37,9 @@ export const App = () => {
         <Route path="/" element={<Navbar onOpen={onOpen} />}> 
           <Route index element={<HomePage/>} /> 
           <Route path="register" element={
-              <PublickRoute component={<Register/>}/>}/>
+              <PublickRoute redirectTo="/" component={<Register/>}/>}/>
           <Route path="login" element={
-              <PublickRoute component={<Login/>}/>} />
+              <PublickRoute redirectTo="/" component={<Login/>}/>} />
           <Route path="contacts" element={
             <PrivateRoute redirectTo="/login" component={
             <>

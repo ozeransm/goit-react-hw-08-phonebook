@@ -16,7 +16,7 @@ const Contacts = ()=>{
       dispatch(fetchPhoneBook());
     },[dispatch])
     return(
-      <Box display='flex' flexDirection='column' alignItems='center' w='70%' ml='auto' mr='auto' mt='10px' mb='20px' bg='lightBlue' borderRadius='md' p={4} color='white'>
+      <Box display='flex' flexWrap='wrap' flexDirection='column' alignItems='center' w='70%' ml='auto' mr='auto' mt='10px' mb='20px' bg='lightBlue' borderRadius='md' p={4} color='white'>
         
         <Text fontSize='18px' fontWeight='600' >Contacts</Text>
           

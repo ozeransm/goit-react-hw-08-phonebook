@@ -26,7 +26,7 @@ export const FormLog=({num=100})=>{
     return(
         
         <form onSubmit={handlerLogin}>
-        <FormControl display='flex' >
+        <FormControl display='flex' flexWrap='wrap'>
           {!logined ? <Input 
                           id={`field-r3${num}`}
                           name="email" 
@@ -38,7 +38,7 @@ export const FormLog=({num=100})=>{
                           mr='3' 
                           onChange={({target:{value}})=>setEmail(value)}/> 
                           : <Text fontSize='24px' fontWeight='500'>User: {logUser?.name}</Text>}
-          {!logined && <InputGroup size='md'>
+          {!logined && <InputGroup size='md' w='100' mr='3'>
             <Input
             id={`field-r4${num}`}
             name="password"
@@ -46,6 +46,8 @@ export const FormLog=({num=100})=>{
             pr='4.5rem'
             type={show ? 'text' : 'password'}
             placeholder='Enter password'
+            w='100'
+            
             onChange={({target:{value}})=>setPassword(value)}
             />
             <InputRightElement width='4.5rem'>
@@ -54,7 +56,7 @@ export const FormLog=({num=100})=>{
               </Button>
             </InputRightElement>
           </InputGroup>}
-          <Button ml='3' mr='3' colorScheme='teal' type="submit">{logined ? 'Logout' : 'Login' }</Button>
+          <Button mr='3' colorScheme='teal' type="submit">{logined ? 'Logout' : 'Login' }</Button>
             
         </FormControl>
         </form>
