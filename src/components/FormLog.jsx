@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login, logout } from 'redux/auth/auth';
-import { refresh } from 'redux/contacts/contacts';
 import { isActive, user } from 'redux/selector';
 
 
@@ -20,7 +19,7 @@ export const FormLog=({num=100})=>{
     
       function handlerLogin(e){
         e.preventDefault();
-        !logined && dispatch(login({email, password})).then(()=>{navigate('/contacts');dispatch(refresh())});
+        !logined && dispatch(login({email, password})).then(()=>{navigate('/contacts');});
         logined && dispatch(logout(axios.defaults.headers.common.Authorization));
         
       }

@@ -21,7 +21,7 @@ export const FormReg=({num=100})=>{
     return(
         
         <form onSubmit={handlerRegister}>
-        <FormControl maxWidth='400px' display='flex' flexDirection='column'>
+        <FormControl maxWidth='350px' display='flex' flexDirection='column'>
             <>
             
             <Input 

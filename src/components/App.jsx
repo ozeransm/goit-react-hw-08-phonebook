@@ -1,5 +1,5 @@
 import {  useDispatch, useSelector } from "react-redux";
-import { isLoading } from "../redux/selector";
+import { isLoading, isRefresh } from "../redux/selector";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { ChakraProvider, useDisclosure } from '@chakra-ui/react';
 import { Navbar } from "../page/Navbar";
@@ -30,7 +30,7 @@ const override = {
 export const App = () => {
   const loading = useSelector(isLoading);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  
+  const isRefreshing = useSelector(isRefresh);
   const dispatch = useDispatch(refresh);
   useEffect(()=>{
     dispatch(refresh());
@@ -38,7 +38,7 @@ export const App = () => {
 
   return (
     <ChakraProvider>
-    <>
+    {!isRefreshing &&<>
       <Routes>
         <Route path="/" element={<Navbar onOpen={onOpen} />}> 
           <Route index element={<HomePage/>} /> 
@@ -69,7 +69,7 @@ export const App = () => {
         </Route>   
       </Routes>
       <RegModal onOpen={onOpen} isOpen={isOpen} onClose={onClose}/>
-      </>
+      </>}
     </ChakraProvider> 
     
      
