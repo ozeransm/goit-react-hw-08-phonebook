@@ -31,7 +31,7 @@ export const App = () => {
   const loading = useSelector(isLoading);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isRefreshing = useSelector(isRefresh);
-  const dispatch = useDispatch(refresh);
+  const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(refresh());
   },[dispatch]) 
