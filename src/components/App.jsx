@@ -1,4 +1,4 @@
-import {  useSelector } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import { isLoading } from "../redux/selector";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { ChakraProvider, useDisclosure } from '@chakra-ui/react';
@@ -7,7 +7,8 @@ import { RegModal } from "./RegModal";
 import {  Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublickRoute } from "./PublickRoute";
-import { lazy } from "react";
+import { lazy, useEffect } from "react";
+import { refresh } from "redux/contacts/contacts";
 
 const HomePage = lazy(() => import("../page/HomePage"));
 const NotFound = lazy(() => import("page/NotFound"));
@@ -29,7 +30,12 @@ const override = {
 export const App = () => {
   const loading = useSelector(isLoading);
   const { isOpen, onOpen, onClose } = useDisclosure();
-   
+  
+  const dispatch = useDispatch(refresh);
+  useEffect(()=>{
+    dispatch(refresh());
+  },[dispatch]) 
+
   return (
     <ChakraProvider>
     <>
