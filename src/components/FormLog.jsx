@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login, logout } from 'redux/auth/auth';
+import { refresh } from 'redux/contacts/contacts';
 import { isActive, user } from 'redux/selector';
 
 
@@ -19,7 +20,7 @@ export const FormLog=({num=100})=>{
     
       function handlerLogin(e){
         e.preventDefault();
-        !logined && dispatch(login({email, password})).then(()=>navigate('/contacts'));
+        !logined && dispatch(login({email, password})).then(()=>{navigate('/contacts');dispatch(refresh())});
         logined && dispatch(logout(axios.defaults.headers.common.Authorization));
         
       }
@@ -37,7 +38,7 @@ export const FormLog=({num=100})=>{
                           w='100' 
                           mr='3' 
                           onChange={({target:{value}})=>setEmail(value)}/> 
-                          : <Text fontSize='24px' fontWeight='500'>User: {logUser?.name}</Text>}
+                          : <Text fontSize='24px' mr='3' fontWeight='500'>User: {logUser?.name}</Text>}
           {!logined && <InputGroup size='md' w='100' mr='3'>
             <Input
             id={`field-r4${num}`}
@@ -56,7 +57,7 @@ export const FormLog=({num=100})=>{
               </Button>
             </InputRightElement>
           </InputGroup>}
-          <Button mr='3' colorScheme='teal' type="submit">{logined ? 'Logout' : 'Login' }</Button>
+          <Button mr={logined ? '0' : '3' } colorScheme='teal' type="submit">{logined ? 'Logout' : 'Login' }</Button>
             
         </FormControl>
         </form>

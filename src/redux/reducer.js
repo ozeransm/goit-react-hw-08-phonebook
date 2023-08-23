@@ -9,7 +9,7 @@ const initialState = {
     error: null,
     filter: "",
     isActive: false,
-    isRefresh: true,
+    isRefresh: false,
     user: null,
     token: null
 }

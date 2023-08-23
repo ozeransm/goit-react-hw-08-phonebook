@@ -21,7 +21,7 @@ export const FormReg=({num=100})=>{
     return(
         
         <form onSubmit={handlerRegister}>
-        <FormControl display='flex' flexDirection='column'>
+        <FormControl maxWidth='400px' display='flex' flexDirection='column'>
             <>
             
             <Input 
@@ -31,7 +31,6 @@ export const FormReg=({num=100})=>{
               value={name} 
               color='grey' 
               placeholder='Full Name' 
-              w='150' 
               mb='5px' 
               onChange={({target:{value}})=>setName(value)}/>  
             <Input 
@@ -41,7 +40,6 @@ export const FormReg=({num=100})=>{
               value={email} 
               color='grey' 
               placeholder='Email' 
-              w='150' 
               mb='5px' 
               onChange={({target:{value}})=>setEmail(value)}/>
         <InputGroup size='md'>

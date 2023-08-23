@@ -5,6 +5,6 @@ import { isActive, isRefresh } from "redux/selector";
 export const PrivateRoute=({ component: Component, redirectTo = '/' })=>{
     const logined = useSelector(isActive);
     const refresh = useSelector(isRefresh);
-    return (!logined && !refresh) ? <Navigate to={redirectTo}/> : Component;
+    const shouldRedirect = !logined && !refresh;
+    return shouldRedirect ? <Navigate to={redirectTo}/> : Component;
 }
-
