@@ -16,7 +16,7 @@ export const FormLog=({num=100})=>{
     const handleClick = () => setShow(!show);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+    // .then(()=>{navigate('/contacts');})
       function handlerLogin(e){
         e.preventDefault();
         !logined && dispatch(login({email, password})).then(()=>{navigate('/contacts');});

@@ -73,10 +73,14 @@ extraReducers: (builder)=>{
         state.isActive = true;
     })
     .addCase(logout.fulfilled, (state, action)=>{
+        state.user = null;
+        state.token = null;
         state.isActive = false;
     })
     .addCase(refresh.pending, (state, action)=>{
+        state.isActive = true;
         state.isRefresh = true;
+        
     })
     .addCase(refresh.fulfilled,(state, action)=>{
         
@@ -86,6 +90,7 @@ extraReducers: (builder)=>{
     })
     .addCase(refresh.rejected, (state, action)=>{
         state.isRefresh = false;
+        state.isActive = false;
     })
 }
 });

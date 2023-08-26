@@ -4,7 +4,7 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import { ChakraProvider, useDisclosure } from '@chakra-ui/react';
 import { Navbar } from "../page/Navbar";
 import { RegModal } from "./RegModal";
-import {  Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublickRoute } from "./PublickRoute";
 import { lazy, useEffect } from "react";
@@ -31,6 +31,7 @@ export const App = () => {
   const loading = useSelector(isLoading);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isRefreshing = useSelector(isRefresh);
+  
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(refresh());
